@@ -8,10 +8,7 @@ import (
 	"net/http"
 )
 
-var movies map[string]models.Movie
-
 func Suggest(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
 
 	input, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -35,6 +32,8 @@ func Suggest(w http.ResponseWriter, r *http.Request) {
 	}
 
 	log.Println("input: ", apiInput)
+
+    // TODO: call suggestor and get moview
 
 	// Return response
 	w.Header().Set("Content-Type", "application/json")
